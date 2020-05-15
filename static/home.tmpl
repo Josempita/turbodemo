@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+<link href="https://unpkg.com/tabulator-tables@4.5.1/dist/css/tabulator.min.css" rel="stylesheet">
+<script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.5.1/dist/js/tabulator.min.js"></script>
+ <link rel="stylesheet" href="/css/main.css">
+<title>{{.PageTitle}}</title>
+</head>
+<script type='text/javascript'>
+
+
+    $(document).ready(function() {       
+
+        var table = new Tabulator("#example-table", {
+            height:"850px",
+            layout:"fitColumns",
+            placeholder:"No Data Set",
+            columns:[
+                {title:"Id", field:"id", sorter:"string", width:100},
+                {title:"Name", field:"name", sorter:"string",width:400},
+                 {title:"description", field:"description", sorter:"string",width:400},               
+            ],
+        });
+
+        
+        $('#showparts').click(function(){               
+              
+              
+               table.setData("/parts").then(function(){
+                    //run code after table has been successfuly updated
+                })
+                .catch(function(error){
+                    //handle error loading data
+                });
+               
+        });   
+
+       
+        $('#updateCurve').click(function(){
+              
+                  $('#mainform').get(0).setAttribute('action', '/addpart');
+          
+            $('form').submit();
+            
+        });   
+    });
+   
+</script>
+<body>
+    
+    <div class="container">
+    {{.Greeting}}
+        <div id="login">
+            <form id="mainform" method="get">
+                <fieldset >                 
+                           
+                             <p><input name="name" type="text" /> </p>
+                            <p><input name="description" type="text" /></p>
+                           <p> <input type="submit" class="single" id="updateCurve" value="add part"></p>
+                           
+                            
+                        
+                </fieldset>
+            </form>
+        </div> <!-- end login -->
+    </div>
+    <p> <input type="submit" class="single" id="showparts" value="show parts"></p>
+    <div id="example-table"></div>
+</body>
+</html>
