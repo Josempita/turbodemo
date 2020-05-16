@@ -152,7 +152,7 @@ func main() {
 	// Bind to a port and pass our router in
 	//log.Fatal(http.ListenAndServe(":8000", r))
 
-	r.Run("127.0.0.1:8000")
+	r.Run("0.0.0.0:8000")
 }
 
 func connectDB() *sql.DB {
@@ -172,5 +172,5 @@ func connectDB() *sql.DB {
 }
 
 func getHomeHandler(c *gin.Context) {
-	c.HTML(http.StatusOK, "home.tmpl", gin.H{"Greeting": "Howdee", "PageTitle": "Turbo"})
+	c.HTML(http.StatusOK, "home.tmpl", gin.H{"Greeting": "Howdee  Punk", "PageTitle": "Turbo"})
 }
