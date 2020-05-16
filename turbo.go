@@ -172,5 +172,5 @@ func connectDB() *sql.DB {
 }
 
 func getHomeHandler(c *gin.Context) {
-	c.HTML(http.StatusOK, "home.tmpl", gin.H{"Greeting": "Howdee  Punk", "PageTitle": "Turbo"})
+	c.HTML(http.StatusOK, "home.tmpl", gin.H{"Greeting": "Howdee you  Punk", "PageTitle": "Turbo"})
 }
